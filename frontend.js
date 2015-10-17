@@ -99,21 +99,6 @@ function addStream_hitbox(name, url){
 	}
 }
 
-function addStream_gaminglive(name, url){
-	var startName = url.indexOf("gaminglive.tv/channels/");
-	startName += 23;
-	platform_id = url.slice(startName);
-	endName = platform_id.indexOf('?');
-	if(endName > -1)
-		platform_id = platform_id.slice(0, endName);
-	if(platform_id.length > 0){
-		chrome.extension.getBackgroundPage().__addStream(name, url, "gaminglive", platform_id);
-		flashMessage("Stream został dodany.", "success");
-	} else {
-		flashMessage("Wystąpił błąd.", "error");
-	}
-}
-
 function addStream(){
 	$(".loading").show();
 	var name = $("#addName").val();

@@ -102,36 +102,6 @@ function getData_hitbox(stream){
 	});
 }
 
-function getData_gaminglive(stream){
-	var url = "http://api.gaminglive.tv/channels/"+stream.platform_id;
-	$.ajax({
-		url: url,
-		dataType: 'json',
-		methos: "GET",
-		success: function(resp) {
-			var data = {};
-			if(!resp.state){
-				data = {
-					online: false,
-					viewers: 0
-				}
-			} else {
-				data = {
-					online: true,
-					viewers: resp.state.viewers
-					//avatar:
-					//description:
-				}
-			}
-			processData(stream, data);
-		},
-		error: function(resp){
-			processData(stream, {online:false, viewers:0} );
-		},
-		timeout: 5000
-	});
-}
-
 function getData(stream){
 	switch(stream.platform){
 		case 'twitch':
@@ -139,9 +109,6 @@ function getData(stream){
 			break;
 		case 'hitbox':
 			getData_hitbox(stream);
-			break;
-		case 'gaminglive':
-			getData_gaminglive(stream);
 			break;
 	}
 }
