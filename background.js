@@ -21,7 +21,7 @@ function notify(stream) {
         contextMessage: stream.data.description,
         iconUrl: stream.data.avatar,
         isClickable: true
-    }
+    };
     chrome.notifications.create(stream.name, options, function () {
     });
 
@@ -144,6 +144,10 @@ function loadStreams() {
     $.each(streams, function (key, value) {
         streams[key].data = {online: false, viewers: 0};
     });
+}
+function deleteStream(id) {
+    streams.splice(id, 1);
+    saveStreams();
 }
 function saveStreams() {
     localStorage['streams'] = JSON.stringify(streams);

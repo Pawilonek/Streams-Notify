@@ -121,8 +121,8 @@ var flashMessages = {
 };
 
 function showTab(tabName) {
-    $(".tab").hide();
-    $("#tab_" + tabName).fadeIn();
+    $(".tab").slideUp(500);
+    $("#tab_" + tabName).slideDown(500);
 }
 
 function nicerNumber(num) {
@@ -132,6 +132,12 @@ function nicerNumber(num) {
 function displayStreams() {
     var html = '';
     var online = '';
+    var deleteList = '<ul>';
+    for (var i=0; i<streams.length; i++) {
+        deleteList += '<li><a class="deleteStream" href="#" data-id="' + i + '">' + streams[i].name + '</a></li>';
+    }
+    deleteList += '</ul>';
+    $("#delete_container").html(deleteList);
     $.each(streams, function (key, stream) {
         if (stream.data.online === false && settings.onlyOnline == 1) {
             return true;
@@ -147,9 +153,18 @@ function displayStreams() {
 				<p><i class="fa fa-users"></i> <span class="stream_viewers">' + nicerNumber(stream.data.viewers) + '</span></p>\
 				</div>';
     });
+    if (streams.length <= 0) {
+        html = '<div class="noStreams">Obecnie nie masz dodanych żadnych streamów. Kliknij na ikonkę plusa (<i class="fa fa-plus"></i>) i dodaj nowy!</div>';
+    } else if (html.length < 10) {
+        html = '<div class="noStreams">Wszystkie dodane przez Ciebie streamy są obecnie offline.</div>';
+    }
     $("#tab_main").children(".container").html(html);
     $(".stream").click(function () {
         chrome.tabs.create({url: $(this).data("url")});
+    });
+    $(".deleteStream").click(function () {
+        var streamId = $(this).data('id');
+        deleteStream(streamId);
     });
     $(".loading").hide();
 }
@@ -234,6 +249,12 @@ function saveSettings() {
     showTab('main');
 }
 
+function deleteStream(id) {
+    chrome.extension.getBackgroundPage().deleteStream(id);
+    refresh();
+    flashMessages.newMessage("Stream został usunięty.", flashMessages.TYPE_SUCCESS);
+}
+
 $(document).ready(function () {
     streams = chrome.extension.getBackgroundPage().streams;
     settings = chrome.extension.getBackgroundPage().settings;
@@ -273,6 +294,9 @@ $(document).ready(function () {
     });
     $(".button_options").click(function () {
         showTab("options");
+    });
+    $(".button_delete").click(function () {
+        showTab("delete");
     });
 
 });
