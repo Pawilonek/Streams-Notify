@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+    <title>Streams Notify</title>
+    <meta charset="UTF-8">
+    <!-- js -->
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="frontend.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="jquery-ui.min.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="tab_main" class="tab">
+    <div class="container"></div>
+
+    <div class="menu">
+        <div class="loading"><i class="fa fa-spinner fa-spin"></i></div>
+        <i class="button_refresh fa fa-refresh" title="odśwież"></i>
+        <i class="button_add fa fa-plus" title="dodaj"></i>
+        <!-- <i class="fa fa-trash-o" title="usuń"></i> -->
+        <i class="button_options fa fa-cogs" title="ustawienia"></i>
+        <i class="button_info fa fa-info" title="informacje"></i>
+    </div>
+</div>
+
+<div id="tab_add" class="tab">
+    <h1>dodaj stream</h1>
+
+    <input id="addName" type="text" placeholder="nazwa"/>
+
+    <div class="setting_desc">
+        Nazwa pod jaką ma być wyświetlany stream.
+    </div>
+
+    <input id="addUrl" type="text" placeholder="adres"/>
+
+    <div class="setting_desc">
+        Adres do strony na której znajduje się stream. Lista obsługiwanych serwisów:
+        <ul>
+            <li><a href="http://www.twitch.tv/" target="_blank">twitch.tv</a></li>
+            <li><a href="http://www.hitbox.tv/" target="_blank">hitbox.tv</a></li>
+            <li><a href="http://www.gaminglive.tv/" target="_blank">gaminglive.tv</a></li>
+        </ul>
+    </div>
+
+    <div class="menu">
+        <div class="loading"><i class="fa fa-spinner fa-spin"></i></div>
+        <i class="button_submitAdd fa fa-check" title="dodaj"></i>
+        <i class="button_main fa fa-times" title="anuluj"></i>
+    </div>
+</div>
+
+<div id="tab_options" class="tab">
+    <h1>ustawienia</h1>
+
+    <div class="setting_nav">
+        Częstotliwość odświeżania: <span class="freq"></span>s.
+        <div id="freq_slider"></div>
+    </div>
+    <div class="setting_desc">Czas po jakim dostępność streamu ma zostać ponownie sprawdzona.</div>
+
+    <div class="setting_nav">
+        <input type="checkbox" id="options_notify"/><label for="options_notify">Powiadomienia</label>
+    </div>
+    <div class="setting_desc">Włącza powiadomienia o rozpoczęciu streamu.</div>
+
+    <div class="setting_nav">
+        <input type="checkbox" id="options_online"/><label for="options_online">Tylko online</label>
+    </div>
+    <div class="setting_desc">Wyświetla tylko te streamy które są aktualnie włączone.</div>
+
+    <div class="menu">
+        <div class="loading"><i class="fa fa-spinner fa-spin"></i></div>
+        <i class="button_saveSettings fa fa-check" title="dodaj"></i>
+        <i class="button_main fa fa-times" title="anuluj"></i>
+    </div>
+</div>
+
+<!--
+<div id="tab_delete" class="tab">
+    <header>usuń</header>
+    <section>
+        <div id="delete_container">
+
+        </div>
+    </section>
+    <footer>
+        <div class="output"></div>
+        <div id="delete_confirm" class="button" title="usuń zaznaczone"></div>
+        <div id="delete_close" class="button" title="zamknij"></div>
+    </footer>
+</div>
+-->
+
+<div id="tab_info" class="tab">
+    <h1>Streams Notify</h1>
+
+    <p><i>wersja:</i> <span class="sn_version">---</span></p>
+
+    <p><i>autor:</i> <a href="http://pawilonek.2ap.pl/" target="_blank">Pawilonek</a></p>
+
+    <div class="menu">
+        <div class="loading"><i class="fa fa-spinner fa-spin"></i></div>
+        <i class="button_main fa fa-times" title="zamknij"></i>
+    </div>
+</div>
+
+<div id="flash_message" class="fm_success">
+    <div id="fm_icon"></div>
+    <div id="fm_message"></div>
+    <div style="clear: both;"></div>
+</div>
+
+</body>
+</html>
