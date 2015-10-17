@@ -1,7 +1,7 @@
 {
    "background": {
       "persistent": true,
-      "scripts": [ "vendor/jquery/jquery.min.js", "background.js" ]
+      "scripts": [ "vendor/jquery/jquery.min.js", "background.min.js" ]
    },
    "browser_action": {
       "default_icon": "files/icon.png",
