@@ -16,6 +16,6 @@
    "manifest_version": 2,
    "name": "Streams Notify",
    "optional_permissions": [ "background" ],
-   "permissions": [ "https://api.twitch.tv/kraken/*", "http://static-cdn.jtvnw.net/*", "http://api.hitbox.tv/*", "http://edge.sf.hitbox.tv/*", "http://api.gaminglive.tv/*", "notifications", "storage"],
+   "permissions": [ "https://api.twitch.tv/kraken/*", "http://static-cdn.jtvnw.net/*", "http://api.hitbox.tv/*", "http://edge.sf.hitbox.tv/*", "notifications", "storage"],
    "version": "2.0.2"
 }

@@ -1,32 +1,124 @@
 var streams = null;
 
-function flashMessage(message, type) {
-    $("#flash_message").removeClass();
-    switch (type) {
-        case 'success':
-            $("#flash_message").addClass('fm_success');
-            $("#fm_icon").html('<i class="fa fa-check-circle"></i>');
-            break;
-        case 'info':
-            $("#flash_message").addClass('fm_info');
-            $("#fm_icon").html('<i class="fa fa-info-circle"></i>');
-            break;
-        case 'warning':
-            $("#flash_message").addClass('fm_warning');
-            $("#fm_icon").html('<i class="fa fa-exclamation-triangle"></i>');
-            break;
-        case 'error':
-            $("#flash_message").addClass('fm_error');
-            $("#fm_icon").html('<i class="fa fa-exclamation-circle"></i>');
-            break;
-        default:
-            $("#flash_message").addClass('fm_notification');
-            $("#fm_icon").html('<i class="fa fa-paperclip"></i>');
-            break;
+var flashMessages = {
+    // notification types
+    TYPE_NOTIFICATION: 'notification',
+    TYPE_SUCCESS: 'success',
+    TYPE_WARNING: 'warning',
+    TYPE_ERROR: 'error',
+    TYPE_INFO: 'info',
+    // slide duration (ms)
+    slideDuration: 300,
+    // container for flash messages
+    container: "#flashMessages",
+    /**
+     * This function check if passed type exist in system.
+     * If not return type: notification.
+     *
+     * @param type
+     * @returns {string}
+     */
+    getType: function (type) {
+        switch (type) {
+            case this.TYPE_NOTIFICATION:
+            case this.TYPE_SUCCESS:
+            case this.TYPE_WARNING:
+            case this.TYPE_ERROR:
+            case this.TYPE_INFO:
+                return type;
+                break;
+            default:
+                return this.TYPE_NOTIFICATION;
+        }
+    },
+    /**
+     * This function return font-awesome icon for passed type.
+     *
+     * @param type
+     * @returns {jQuery}
+     */
+    createIcon: function (type) {
+        // create new icon
+        var $icon = $("<div>", {
+            class: "icon"
+        });
+        // get supported type
+        type = this.getType(type);
+        // set default icon (notification)
+        var iconClass = 'fa fa-fw fa-paperclip';
+        // get class icon
+        switch (type) {
+            case this.TYPE_SUCCESS:
+                iconClass = 'fa fa-fw fa-check-circle';
+                break;
+            case this.TYPE_INFO:
+                iconClass = 'fa fa-fw fa-info-circle';
+                break;
+            case this.TYPE_WARNING:
+                iconClass = 'fa fa-fw fa-exclamation-triangle';
+                break;
+            case this.TYPE_ERROR:
+                iconClass = 'fa fa-fw fa-exclamation-circle';
+                break;
+        }
+        // create icon object
+        $("<i>", {
+            class: iconClass
+        }).appendTo($icon);
+        // return icon object
+        return $icon;
+    },
+    /**
+     * This function hide and delete flash message.
+     *
+     * @param $fm
+     */
+    deleteMessage: function ($fm) {
+        // check if this object still exists
+        if (typeof $fm != "object") {
+            return;
+        }
+        // hide message
+        $fm.slideUp({
+            duration: flashMessages.slideDuration,
+            done: function () {
+                // after animation remove message
+                $fm.remove();
+            }
+        });
+    },
+    /**
+     * This function create new flash message.
+     *
+     * @param message
+     * @param type
+     */
+    newMessage: function (message, type) {
+        // create flash message div
+        var $fm = $("<div>", {
+            class: "fm " + this.getType(type),
+            click: function () {
+                var $this = $(this);
+                flashMessages.deleteMessage($this);
+            }
+        }).hide();
+        // add icon
+        var $icon = this.createIcon(type);
+        $icon.appendTo($fm);
+        // add message
+        $("<div>", {
+            class: "message",
+            text: message
+        }).appendTo($fm);
+        // append new message to container
+        $fm.appendTo(this.container);
+        $fm.slideDown(flashMessages.slideDuration);
+        // hide message after 5s
+        setTimeout(function () {
+            flashMessages.deleteMessage($fm);
+        }, 5000);
     }
-    $("#fm_message").html(message);
-    $("#flash_message").fadeIn().delay(5000).fadeOut();
-}
+};
 
 function showTab(tabName) {
     $(".tab").hide();
@@ -78,9 +170,9 @@ function addStream_twitch(name, url) {
         platform_id = platform_id.slice(0, endName);
     if (platform_id.length > 0) {
         chrome.extension.getBackgroundPage().__addStream(name, url, "twitch", platform_id);
-        flashMessage("Stream został dodany.", "success");
+        flashMessages.newMessage("Stream został dodany.", flashMessages.TYPE_SUCCESS);
     } else {
-        flashMessage("Wystąpił błąd.", "error");
+        flashMessages.newMessage("Wystąpił błąd.", flashMessages.TYPE_ERROR);
     }
 }
 
@@ -93,9 +185,9 @@ function addStream_hitbox(name, url) {
         platform_id = platform_id.slice(0, endName);
     if (platform_id.length > 0) {
         chrome.extension.getBackgroundPage().__addStream(name, url, "hitbox", platform_id);
-        flashMessage("Stream został dodany.", "success");
+        flashMessages.newMessage("Stream został dodany.", flashMessages.TYPE_SUCCESS);
     } else {
-        flashMessage("Wystąpił błąd.", "error");
+        flashMessages.newMessage("Wystąpił błąd.", flashMessages.TYPE_ERROR);
     }
 }
 
@@ -113,7 +205,7 @@ function addStream() {
     } else if (url.indexOf("gaminglive.tv") > -1) {
         addStream_gaminglive(name, url);
     } else {
-        flashMessage("Podana strona nie jest obsługiwana.", "warning");
+        flashMessages.newMessage("Podana strona nie jest obsługiwana.", flashMessages.TYPE_WARNING);
     }
 
     refresh(2000);
@@ -137,7 +229,7 @@ function saveSettings() {
     settings.onlyOnline = $("#options_online").prop('checked') === true ? 1 : 0;
     settings.freq = $("#freq_slider").slider("value");
     chrome.extension.getBackgroundPage().saveSettings();
-    flashMessage('Ustawienia zostały zapisane.', 'success');
+    flashMessages.newMessage('Ustawienia zostały zapisane.', flashMessages.TYPE_SUCCESS);
     refresh();
     showTab('main');
 }

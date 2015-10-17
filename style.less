@@ -93,53 +93,47 @@ body {
 }
 
 .stream p {
-    margin: 0px;
+    margin: 0;
     padding: 2px;
 }
 
-#flash_message {
+.fm {
+    cursor: pointer;
+    margin: 2px 0;
     padding: 5px;
-    display: none;
-}
-
-#fm_icon {
-    float: left;
-    width: 20px;
-}
-
-#fm_message {
-    float: left;
-    width: 215px;
-}
-
-.fm_success {
-    color: #36771d;
-    background-color: #ccebc9;
-    border: 1px solid #6abf5a;
-}
-
-.fm_info {
-    color: #426ca1;
-    background-color: #eaf7ff;
-    border: 1px solid #d1e1eb;
-}
-
-.fm_notification {
-    color: #757676;
-    background-color: #f6f7fa;
-    border: 1px solid #ced5d8;
-}
-
-.fm_warning {
-    color: #a57f42;
-    background-color: #fbf6dd;
-    border: 1px solid #c1a87d;
-}
-
-.fm_error {
-    color: #ab0019;
-    background-color: #f7d3ce;
-    border: 1px solid #df8c87;
+    position: relative;
+    &.success {
+        color: #36771d;
+        background-color: #ccebc9;
+        border: 1px solid #6abf5a;
+    }
+    &.info {
+        color: #426ca1;
+        background-color: #eaf7ff;
+        border: 1px solid #d1e1eb;
+    }
+    &.notification {
+        color: #757676;
+        background-color: #f6f7fa;
+        border: 1px solid #ced5d8;
+    }
+    &.warning {
+        color: #a57f42;
+        background-color: #fbf6dd;
+        border: 1px solid #c1a87d;
+    }
+    &.error {
+        color: #ab0019;
+        background-color: #f7d3ce;
+        border: 1px solid #df8c87;
+    }
+    .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 1.4em;
+        opacity: 0.2;
+    }
 }
 
 #freq_slider {
