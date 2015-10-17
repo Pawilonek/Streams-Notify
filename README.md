@@ -4,7 +4,7 @@
  * Dodano możliwość usuwania streamów
  * Przepisano silnik odpowiedzialny za wyświetlanie komunikatów
 
-[2.0.1] *04.02.2015*
+[2.0.1] *04.06.2015*
 
  * Dodano wsparcie dla gaminglive.tv
  * Dodano wsparcie dla hitbox.tv
