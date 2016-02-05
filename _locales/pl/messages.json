@@ -1,0 +1,134 @@
+{
+  "extName": {
+    "message": "Streams Notify",
+    "description": "Extension name."
+  },
+  "extDescription": {
+    "message": "Rozszerzenie wyświetla aktualny status wybranych streamów oraz powiadamia o ich rozpoczęciu.",
+    "description": "Extension description."
+  },
+  "addStream": {
+    "message": "dodaj stream",
+    "description": ""
+  },
+  "addStream_name": {
+    "message": "nazwa",
+    "description": ""
+  },
+  "addStream_nameDescription": {
+    "message": "Nazwa pod jaką ma być wyświetlany stream.",
+    "description": ""
+  },
+  "addStream_url": {
+    "message": "adres",
+    "description": ""
+  },
+  "addStream_urlDescription": {
+    "message": "Adres do strony na której znajduje się stream. Lista obsługiwanych serwisów:",
+    "description": ""
+  },
+  "deleting": {
+    "message": "usuwania",
+    "description": ""
+  },
+  "deleting_warning": {
+    "message": "(wystarczy kliknąć!)",
+    "description": ""
+  },
+  "settings": {
+    "message": "ustawienia",
+    "description": ""
+  },
+  "settings_refreshFreq": {
+    "message": "Częstotliwość odświeżania:",
+    "description": ""
+  },
+  "settings_refreshFreqDescription": {
+    "message": "Czas po jakim dostępność streamu ma zostać ponownie sprawdzona.",
+    "description": ""
+  },
+  "settings_notices": {
+    "message": "Powiadomienia",
+    "description": ""
+  },
+  "settings_noticesDescription": {
+    "message": "Włącza powiadomienia o rozpoczęciu streamu.",
+    "description": ""
+  },
+  "settings_onlyOnline": {
+    "message": "Tylko online",
+    "description": ""
+  },
+  "settings_onlyOnlineDescription": {
+    "message": "Wyświetla tylko te streamy które są aktualnie włączone.",
+    "description": ""
+  },
+  "info_version": {
+    "message": "wersja",
+    "description": ""
+  },
+  "info_author": {
+    "message": "autor",
+    "description": ""
+  },
+  "flashMessage_streamAdded": {
+    "message": "Stream został dodany.",
+    "description": ""
+  },
+  "flashMessage_error": {
+    "message": "Wystąpił błąd.",
+    "description": ""
+  },
+  "flashMessage_unsupportedWebsite": {
+    "message": "Wystąpił błąd.",
+    "description": ""
+  },
+  "flashMessage_settingsSaved": {
+    "message": "Ustawienia zostały zapisane.",
+    "description": ""
+  },
+  "flashMessage_streamDeleted": {
+    "message": "Stream został usunięty.",
+    "description": ""
+  },
+  "noStreams_addNew": {
+    "message": "Obecnie nie masz dodanych żadnych streamów. Kliknij na ikonkę plusa (<i class=\"fa fa-plus\"></i>) i dodaj nowy!",
+    "description": ""
+  },
+  "noStreams_offline": {
+    "message": "Wszystkie dodane przez Ciebie streamy są obecnie offline.",
+    "description": ""
+  },
+  "menu_refresh": {
+    "message": "odświerz",
+    "description": ""
+  },
+  "menu_add": {
+    "message": "dodaj",
+    "description": ""
+  },
+  "menu_delete": {
+    "message": "usuń",
+    "description": ""
+  },
+  "menu_settings": {
+    "message": "ustawienia",
+    "description": ""
+  },
+  "menu_info": {
+    "message": "informacje",
+    "description": ""
+  },
+  "menu_cancel": {
+    "message": "anuluj",
+    "description": ""
+  },
+  "menu_close": {
+    "message": "zamknij",
+    "description": ""
+  },
+  "menu_save": {
+    "message": "zapisz",
+    "description": ""
+  }
+}

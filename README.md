@@ -1,3 +1,8 @@
+[2.0.3] *TODO*
+
+ * Dodano wsparcie dla wielojęzyczności
+ * Poprawiono powiadomienia z twitcha
+
 [2.0.2] *17.10.2015*
 
  * Usunięto wsparcie dla gaminglive.tv (strona została zamknięta)

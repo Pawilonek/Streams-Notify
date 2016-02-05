@@ -21,27 +21,29 @@
     <div class="container"></div>
     <div class="menu">
         <div class="loading"><i class="fa fa-spinner fa-spin"></i></div>
-        <i class="button_refresh fa fa-refresh" title="odśwież"></i>
-        <i class="button_add fa fa-plus" title="dodaj"></i>
-        <i class="button_delete fa fa-trash-o" title="usuń"></i>
-        <i class="button_options fa fa-cogs" title="ustawienia"></i>
-        <i class="button_info fa fa-info" title="informacje"></i>
+        <i class="button_refresh fa fa-refresh translationsTitle" data-message="menu_refresh" title="odśwież"></i>
+        <i class="button_add fa fa-plus translationsTitle" data-message="menu_add" title="dodaj"></i>
+        <i class="button_delete fa fa-trash-o translationsTitle" data-message="menu_delete" title="usuń"></i>
+        <i class="button_options fa fa-cogs translationsTitle" data-message="menu_settings" title="ustawienia"></i>
+        <i class="button_info fa fa-info translationsTitle" data-message="menu_info" title="informacje"></i>
     </div>
 </div>
 
 <div id="tab_add" class="tab">
-    <h1>dodaj stream</h1>
+    <h1><span class="translations" data-message="addStream"></span></h1>
 
-    <input id="addName" type="text" placeholder="nazwa"/>
+    <input id="addName" class="translationsPlaceholder"
+           data-message="addStream_name" type="text" placeholder="nazwa"/>
 
     <div class="setting_desc">
-        Nazwa pod jaką ma być wyświetlany stream.
+        <span class="translations" data-message="addStream_nameDescription"></span>
     </div>
 
-    <input id="addUrl" type="text" placeholder="adres"/>
+    <input id="addUrl" class="translationsPlaceholder"
+           data-message="addStream_url" type="text" placeholder="adres"/>
 
     <div class="setting_desc">
-        Adres do strony na której znajduje się stream. Lista obsługiwanych serwisów:
+        <span class="translations" data-message="addStream_urlDescription"></span>
         <ul>
             <li><a href="http://www.twitch.tv/" target="_blank">twitch.tv</a></li>
             <li><a href="http://www.hitbox.tv/" target="_blank">hitbox.tv</a></li>
@@ -50,59 +52,82 @@
 
     <div class="menu">
         <div class="loading"><i class="fa fa-spinner fa-spin"></i></div>
-        <i class="button_submitAdd fa fa-check" title="dodaj"></i>
-        <i class="button_main fa fa-times" title="anuluj"></i>
-    </div>
-</div>
-
-<div id="tab_options" class="tab">
-    <h1>ustawienia</h1>
-
-    <div class="setting_nav">
-        Częstotliwość odświeżania: <span class="freq"></span>s.
-        <div id="freq_slider"></div>
-    </div>
-    <div class="setting_desc">Czas po jakim dostępność streamu ma zostać ponownie sprawdzona.</div>
-
-    <div class="setting_nav">
-        <input type="checkbox" id="options_notify"/><label for="options_notify">Powiadomienia</label>
-    </div>
-    <div class="setting_desc">Włącza powiadomienia o rozpoczęciu streamu.</div>
-
-    <div class="setting_nav">
-        <input type="checkbox" id="options_online"/><label for="options_online">Tylko online</label>
-    </div>
-    <div class="setting_desc">Wyświetla tylko te streamy które są aktualnie włączone.</div>
-
-    <div class="menu">
-        <div class="loading"><i class="fa fa-spinner fa-spin"></i></div>
-        <i class="button_saveSettings fa fa-check" title="dodaj"></i>
-        <i class="button_main fa fa-times" title="anuluj"></i>
+        <i class="button_submitAdd fa fa-check translationsTitle" data-message="menu_add" title="dodaj"></i>
+        <i class="button_main fa fa-times translationsTitle" data-message="menu_cancel" title="anuluj"></i>
     </div>
 </div>
 
 <div id="tab_delete" class="tab">
     <div class="container">
-    <h1>usuwanie</h1>
-    <h2 class="warning">(wystarczy kliknąć!)</h2>
-    <div id="delete_container"></div>
+        <h1><span class="translations" data-message="deleting"></span></h1>
+
+        <h2 class="warning">
+            <span class="translations" data-message="deleting_warning"></span>
+        </h2>
+
+        <div id="delete_container"></div>
     </div>
     <div class="menu">
         <div class="loading"><i class="fa fa-spinner fa-spin"></i></div>
-        <i class="button_main fa fa-times" title="zamknij"></i>
+        <i class="button_main fa fa-times translationsTitle" data-message="menu_close" title="zamknij"></i>
+    </div>
+</div>
+
+<div id="tab_options" class="tab">
+    <h1><span class="translations" data-message="settings"></span></h1>
+
+    <div class="setting_nav">
+        <span class="translations" data-message="settings_refreshFreq"></span>
+        <span class="freq"></span>s.
+        <div id="freq_slider"></div>
+    </div>
+    <div class="setting_desc">
+        <span class="translations" data-message="settings_refreshFreqDescription"></span>
+    </div>
+
+    <div class="setting_nav">
+        <input type="checkbox" id="options_notify"/>
+        <label for="options_notify">
+            <span class="translations" data-message="settings_notices"></span>
+        </label>
+    </div>
+    <div class="setting_desc">
+        <span class="translations" data-message="settings_noticesDescription"></span>
+    </div>
+
+    <div class="setting_nav">
+        <input type="checkbox" id="options_online"/>
+        <label for="options_online">
+            <span class="translations" data-message="settings_onlyOnline"></span>
+        </label>
+    </div>
+    <div class="setting_desc">
+        <span class="translations" data-message="settings_onlyOnlineDescription"></span>
+    </div>
+
+    <div class="menu">
+        <div class="loading"><i class="fa fa-spinner fa-spin"></i></div>
+        <i class="button_saveSettings fa fa-check translationsTitle" data-message="menu_save" title="zapisz"></i>
+        <i class="button_main fa fa-times translationsTitle" data-message="menu_cancel" title="anuluj"></i>
     </div>
 </div>
 
 <div id="tab_info" class="tab">
-    <h1>Streams Notify</h1>
+    <h1><span class="translations" data-message="extName"></span></h1>
 
-    <p><i>wersja:</i> <span class="sn_version">---</span></p>
+    <p>
+        <i><span class="translations" data-message="info_version"></span>:</i>
+        <span class="sn_version"></span>
+    </p>
 
-    <p><i>autor:</i> <a href="http://pawilonek.2ap.pl/" target="_blank">Pawilonek</a></p>
+    <p>
+        <i><span class="translations" data-message="info_author"></span>:</i>
+        pawilonek@gmail.com
+    </p>
 
     <div class="menu">
         <div class="loading"><i class="fa fa-spinner fa-spin"></i></div>
-        <i class="button_main fa fa-times" title="zamknij"></i>
+        <i class="button_main fa fa-times translationsTitle" data-message="menu_close" title="zamknij"></i>
     </div>
 </div>
 

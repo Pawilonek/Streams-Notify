@@ -63,7 +63,7 @@ function getData_twitch(stream) {
                     viewers: resp.stream.viewers,
                     avatar: resp.stream.channel.logo,
                     description: resp.stream.channel.status
-                }
+                };
             }
             processData(stream, data);
         },

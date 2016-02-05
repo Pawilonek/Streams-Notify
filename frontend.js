@@ -1,7 +1,7 @@
 var streams = null;
 
 var flashMessages = {
-    // notification types
+    // message types
     TYPE_NOTIFICATION: 'notification',
     TYPE_SUCCESS: 'success',
     TYPE_WARNING: 'warning',
@@ -120,6 +120,49 @@ var flashMessages = {
     }
 };
 
+var translations = {
+    init: function () {
+        var html = $(".translations");
+        html.each(function (index) {
+            var $this = $(this);
+            var message = $this.data().message;
+            var translation = translations.get(message);
+            $this.html(translation);
+        });
+
+        var placeholders = $(".translationsPlaceholder");
+        placeholders.each(function (index) {
+            var $this = $(this);
+            var message = $this.data().message;
+            var translation = translations.get(message);
+            $this.attr('placeholder', translation);
+        });
+
+        var titles = $(".translationsTitle");
+        titles.each(function (index) {
+            var $this = $(this);
+            var message = $this.data().message;
+            var translation = translations.get(message);
+            $this.attr('title', translation);
+        });
+
+    },
+    /**
+     * This function return translated phrase for
+     *
+     * @param messageName
+     * @returns {string}
+     */
+    get: function (messageName) {
+        if (!messageName) {
+            return "";
+        }
+
+        return chrome.i18n.getMessage(messageName);
+    }
+
+};
+
 function showTab(tabName) {
     $(".tab").slideUp(500);
     $("#tab_" + tabName).slideDown(500);
@@ -133,7 +176,7 @@ function displayStreams() {
     var html = '';
     var online = '';
     var deleteList = '<ul>';
-    for (var i=0; i<streams.length; i++) {
+    for (var i = 0; i < streams.length; i++) {
         deleteList += '<li><a class="deleteStream" href="#" data-id="' + i + '">' + streams[i].name + '</a></li>';
     }
     deleteList += '</ul>';
@@ -154,9 +197,9 @@ function displayStreams() {
 				</div>';
     });
     if (streams.length <= 0) {
-        html = '<div class="noStreams">Obecnie nie masz dodanych żadnych streamów. Kliknij na ikonkę plusa (<i class="fa fa-plus"></i>) i dodaj nowy!</div>';
+        html = '<div class="noStreams">' + translations.get("noStreams_addNew") + '</div>';
     } else if (html.length < 10) {
-        html = '<div class="noStreams">Wszystkie dodane przez Ciebie streamy są obecnie offline.</div>';
+        html = '<div class="noStreams">' + translations.get("noStreams_offline") + '</div>';
     }
     $("#tab_main").children(".container").html(html);
     $(".stream").click(function () {
@@ -185,9 +228,9 @@ function addStream_twitch(name, url) {
         platform_id = platform_id.slice(0, endName);
     if (platform_id.length > 0) {
         chrome.extension.getBackgroundPage().__addStream(name, url, "twitch", platform_id);
-        flashMessages.newMessage("Stream został dodany.", flashMessages.TYPE_SUCCESS);
+        flashMessages.newMessage(translations.get("flashMessage_streamAdded"), flashMessages.TYPE_SUCCESS);
     } else {
-        flashMessages.newMessage("Wystąpił błąd.", flashMessages.TYPE_ERROR);
+        flashMessages.newMessage(translations.get("flashMessage_error"), flashMessages.TYPE_ERROR);
     }
 }
 
@@ -200,9 +243,9 @@ function addStream_hitbox(name, url) {
         platform_id = platform_id.slice(0, endName);
     if (platform_id.length > 0) {
         chrome.extension.getBackgroundPage().__addStream(name, url, "hitbox", platform_id);
-        flashMessages.newMessage("Stream został dodany.", flashMessages.TYPE_SUCCESS);
+        flashMessages.newMessage(translations.get("flashMessage_streamAdded"), flashMessages.TYPE_SUCCESS);
     } else {
-        flashMessages.newMessage("Wystąpił błąd.", flashMessages.TYPE_ERROR);
+        flashMessages.newMessage(translations.get("flashMessage_error"), flashMessages.TYPE_ERROR);
     }
 }
 
@@ -220,7 +263,7 @@ function addStream() {
     } else if (url.indexOf("gaminglive.tv") > -1) {
         addStream_gaminglive(name, url);
     } else {
-        flashMessages.newMessage("Podana strona nie jest obsługiwana.", flashMessages.TYPE_WARNING);
+        flashMessages.newMessage(translations.get("flashMessage_unsupportedWebsite"), flashMessages.TYPE_WARNING);
     }
 
     refresh(2000);
@@ -244,7 +287,7 @@ function saveSettings() {
     settings.onlyOnline = $("#options_online").prop('checked') === true ? 1 : 0;
     settings.freq = $("#freq_slider").slider("value");
     chrome.extension.getBackgroundPage().saveSettings();
-    flashMessages.newMessage('Ustawienia zostały zapisane.', flashMessages.TYPE_SUCCESS);
+    flashMessages.newMessage(translations.get("flashMessage_settingsSaved"), flashMessages.TYPE_SUCCESS);
     refresh();
     showTab('main');
 }
@@ -252,10 +295,12 @@ function saveSettings() {
 function deleteStream(id) {
     chrome.extension.getBackgroundPage().deleteStream(id);
     refresh();
-    flashMessages.newMessage("Stream został usunięty.", flashMessages.TYPE_SUCCESS);
+    flashMessages.newMessage(translations.get("flashMessage_streamDeleted"), flashMessages.TYPE_SUCCESS);
 }
 
 $(document).ready(function () {
+    translations.init();
+
     streams = chrome.extension.getBackgroundPage().streams;
     settings = chrome.extension.getBackgroundPage().settings;
     refresh();
@@ -270,8 +315,8 @@ $(document).ready(function () {
         change: refreschFreq
     });
     $(".freq").html(settings.freq);
-    $("#options_notify").prop('checked', settings.notify == 1 ? true : false);
-    $("#options_online").prop('checked', settings.onlyOnline == 1 ? true : false);
+    $("#options_notify").prop('checked', settings.notify == 1);
+    $("#options_online").prop('checked', settings.onlyOnline == 1);
 
     $(".button_info").click(function () {
         showTab("info");
