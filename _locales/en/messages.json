@@ -4,131 +4,131 @@
     "description": "Extension name."
   },
   "extDescription": {
-    "message": "Rozszerzenie wyświetla aktualny status wybranych streamów oraz powiadamia o ich rozpoczęciu.",
+    "message": "The extension displays the current status of the selected streams and notify about their start.",
     "description": "Extension description."
   },
   "addStream": {
-    "message": "dodaj stream",
+    "message": "add stream",
     "description": ""
   },
   "addStream_name": {
-    "message": "nazwa",
+    "message": "name",
     "description": ""
   },
   "addStream_nameDescription": {
-    "message": "Nazwa pod jaką ma być wyświetlany stream.",
+    "message": "The display name of the stream.",
     "description": ""
   },
   "addStream_url": {
-    "message": "adres",
+    "message": "url",
     "description": ""
   },
   "addStream_urlDescription": {
-    "message": "Adres do strony na której znajduje się stream. Lista obsługiwanych serwisów:",
+    "message": "Address to the page with a stream. List of supported sites:",
     "description": ""
   },
   "deleting": {
-    "message": "usuwania",
+    "message": "delete",
     "description": ""
   },
   "deleting_warning": {
-    "message": "(wystarczy kliknąć!)",
+    "message": "(just click!)",
     "description": ""
   },
   "settings": {
-    "message": "ustawienia",
+    "message": "settings",
     "description": ""
   },
   "settings_refreshFreq": {
-    "message": "Częstotliwość odświeżania:",
+    "message": "Refresh rate:",
     "description": ""
   },
   "settings_refreshFreqDescription": {
-    "message": "Czas po jakim dostępność streamu ma zostać ponownie sprawdzona.",
+    "message": "Time after which the availability of the stream has to be rechecked.",
     "description": ""
   },
   "settings_notices": {
-    "message": "Powiadomienia",
+    "message": "Notifications",
     "description": ""
   },
   "settings_noticesDescription": {
-    "message": "Włącza powiadomienia o rozpoczęciu streamu.",
+    "message": "Enable notices when a stream starts",
     "description": ""
   },
   "settings_onlyOnline": {
-    "message": "Tylko online",
+    "message": "Just online",
     "description": ""
   },
   "settings_onlyOnlineDescription": {
-    "message": "Wyświetla tylko te streamy które są aktualnie włączone.",
+    "message": "Displays only those streams that are currently online.",
     "description": ""
   },
   "info_version": {
-    "message": "wersja",
+    "message": "version",
     "description": ""
   },
   "info_author": {
-    "message": "autor",
+    "message": "author",
     "description": ""
   },
   "flashMessage_streamAdded": {
-    "message": "Stream został dodany.",
+    "message": "Stream added.",
     "description": ""
   },
   "flashMessage_error": {
-    "message": "Wystąpił błąd.",
+    "message": "An error occurred.",
     "description": ""
   },
   "flashMessage_unsupportedWebsite": {
-    "message": "Podana strona nie jest wspierana.",
+    "message": "The site is not supported..",
     "description": ""
   },
   "flashMessage_settingsSaved": {
-    "message": "Ustawienia zostały zapisane.",
+    "message": "Settings saved.",
     "description": ""
   },
   "flashMessage_streamDeleted": {
-    "message": "Stream został usunięty.",
+    "message": "Stream deleted.",
     "description": ""
   },
   "noStreams_addNew": {
-    "message": "Obecnie nie masz dodanych żadnych streamów. Kliknij na ikonkę plusa (<i class=\"fa fa-plus\"></i>) i dodaj nowy!",
+    "message": "Currently you have not added any streams. Click on the plus icon (<i class=\"fa fa-plus\"></i>) and add a new one!",
     "description": ""
   },
   "noStreams_offline": {
-    "message": "Wszystkie dodane przez Ciebie streamy są obecnie offline.",
+    "message": "All of your streams are now offline.",
     "description": ""
   },
   "menu_refresh": {
-    "message": "odświerz",
+    "message": "refresh",
     "description": ""
   },
   "menu_add": {
-    "message": "dodaj",
+    "message": "add",
     "description": ""
   },
   "menu_delete": {
-    "message": "usuń",
+    "message": "delete",
     "description": ""
   },
   "menu_settings": {
-    "message": "ustawienia",
+    "message": "settings",
     "description": ""
   },
   "menu_info": {
-    "message": "informacje",
+    "message": "info",
     "description": ""
   },
   "menu_cancel": {
-    "message": "anuluj",
+    "message": "cancel",
     "description": ""
   },
   "menu_close": {
-    "message": "zamknij",
+    "message": "close",
     "description": ""
   },
   "menu_save": {
-    "message": "zapisz",
+    "message": "save",
     "description": ""
   }
 }
