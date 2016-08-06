@@ -1,7 +1,8 @@
-[2.0.3] *TODO*
+[2.0.3] *28.02.2016*
 
- * Dodano wsparcie dla wielojęzyczności
  * Poprawiono powiadomienia z twitcha
+ * Dodano wsparcie dla wielojęzyczności
+ * Dodano język angielski 
 
 [2.0.2] *17.10.2015*
 
