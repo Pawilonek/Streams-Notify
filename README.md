@@ -1,3 +1,7 @@
+[2.0.4] *18.09.2016*
+
+ * Dodano nowy nagłówek: Client-ID do api twitch.tv.
+
 [2.0.3] *28.02.2016*
 
  * Poprawiono powiadomienia z twitcha

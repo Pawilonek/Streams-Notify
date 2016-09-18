@@ -49,7 +49,10 @@ function getData_twitch(stream) {
     var url = "https://api.twitch.tv/kraken/streams/" + stream.platform_id;
     $.ajax({
         url: url,
-        dataType: 'json',
+        headers: {
+            'Client-ID': '9c9spfq5717f945wza0l15xygrlx0hl'
+        },
+        //dataType: 'json',
         success: function (resp) {
             var data = {};
             if (resp.stream === null) {
