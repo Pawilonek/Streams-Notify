@@ -50,7 +50,8 @@ function getData_twitch(stream) {
     $.ajax({
         url: url,
         headers: {
-            'Client-ID': '9c9spfq5717f945wza0l15xygrlx0hl'
+            'Client-ID': '9c9spfq5717f945wza0l15xygrlx0hl',
+            'Accept': 'application/vnd.twitchtv.v3+json'
         },
         //dataType: 'json',
         success: function (resp) {
